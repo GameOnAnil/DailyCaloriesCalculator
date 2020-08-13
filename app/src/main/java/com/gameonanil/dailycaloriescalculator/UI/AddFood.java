@@ -37,18 +37,17 @@ public class AddFood extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String foodName = mFoodName.getText().toString();
-                int foodCalorie = Integer.parseInt(mFoodCalorie.getText().toString()) ;
-                if(!foodName.isEmpty() && !mFoodCalorie.getText().toString().isEmpty()){
-                    Intent intent = new Intent(AddFood.this,MainActivity.class);
-                    intent.putExtra("foodName",foodName);
-                    intent.putExtra("foodCalorie",foodCalorie   );
+                if (mFoodName.getText().toString().equals("") || mFoodCalorie.getText().toString().equals("")) {
+                    Toast.makeText(AddFood.this, "Please enter food name and calories", Toast.LENGTH_SHORT).show();
+                } else {
+                    String foodName = mFoodName.getText().toString();
+                    int foodCalorie = 0;
+                    foodCalorie = Integer.parseInt(mFoodCalorie.getText().toString());
+                    Intent intent = new Intent(AddFood.this, MainActivity.class);
+                    intent.putExtra("foodName", foodName);
+                    intent.putExtra("foodCalorie", foodCalorie);
                     startActivity(intent);
-                }else{
-                    Toast.makeText(AddFood.this, "Please enter food name and calorie", Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }

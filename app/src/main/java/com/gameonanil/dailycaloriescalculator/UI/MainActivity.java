@@ -9,14 +9,19 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gameonanil.dailycaloriescalculator.Adapters.BreakfastAdapter;
 import com.gameonanil.dailycaloriescalculator.Model.BreakfastFood;
+import com.gameonanil.dailycaloriescalculator.Model.Food;
 import com.gameonanil.dailycaloriescalculator.R;
+import com.gameonanil.dailycaloriescalculator.ViewModel.FoodViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private BreakfastAdapter mBreakfastAdapter;
     ArrayList<BreakfastFood> breakfastFoods;
+    FoodViewModel foodViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
         mBreakfastAdapter = new BreakfastAdapter(breakfastFoods);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mBreakfastAdapter);
+
+        //initializing view model
+
+        foodViewModel = new ViewModelProvider(this,
+                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(FoodViewModel.class);
+        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
+            @Override
+            public void onChanged(List<Food> foods) {
+                Toast.makeText(MainActivity.this, "db created ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         mCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
