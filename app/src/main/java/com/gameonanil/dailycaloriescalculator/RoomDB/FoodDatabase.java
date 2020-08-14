@@ -49,7 +49,11 @@ public abstract class FoodDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             foodDao.insert(new Food("Rice",400));
-            foodDao.insert(new Food("Juice",50));
+            foodDao.insert(new Food("Orange Juice",120));
+            foodDao.insert(new Food("Cereal",150));
+            foodDao.insert(new Food("Apple",80));
+            foodDao.insert(new Food("Egg Scrambled",91));
+            foodDao.insert(new Food("Egg Boiled",78));
             return null;
         }
     }

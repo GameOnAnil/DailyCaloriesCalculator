@@ -5,10 +5,9 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.gameonanil.dailycaloriescalculator.Model.Food;
-import com.gameonanil.dailycaloriescalculator.Repo.FoodRepository;
+import com.gameonanil.dailycaloriescalculator.Repository.FoodRepository;
 
 import java.util.List;
 

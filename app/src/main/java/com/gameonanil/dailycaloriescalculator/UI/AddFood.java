@@ -2,23 +2,21 @@ package com.gameonanil.dailycaloriescalculator.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
+import com.gameonanil.dailycaloriescalculator.Adapters.ViewPagerAdapter;
 import com.gameonanil.dailycaloriescalculator.R;
+import com.google.android.material.tabs.TabLayout;
+
 
 public class AddFood extends AppCompatActivity {
-    EditText mFoodName;
-    EditText mFoodCalorie;
-    Button saveBtn;
+    private SearchFragment searchFragment;
+    private CustomFoodFragment customFoodFragment;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +28,18 @@ public class AddFood extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        mFoodName = findViewById(R.id.enter_name);
-        mFoodCalorie = findViewById(R.id.enter_calorie);
-        saveBtn = findViewById(R.id.save_food);
+        viewPager = findViewById(R.id.viewpager_addFood);
+        tabLayout = findViewById(R.id.tabLayout_add_food);
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mFoodName.getText().toString().equals("") || mFoodCalorie.getText().toString().equals("")) {
-                    Toast.makeText(AddFood.this, "Please enter food name and calories", Toast.LENGTH_SHORT).show();
-                } else {
-                    String foodName = mFoodName.getText().toString();
-                    int foodCalorie = 0;
-                    foodCalorie = Integer.parseInt(mFoodCalorie.getText().toString());
-                    Intent intent = new Intent(AddFood.this, MainActivity.class);
-                    intent.putExtra("foodName", foodName);
-                    intent.putExtra("foodCalorie", foodCalorie);
-                    startActivity(intent);
-                }
+        searchFragment = new SearchFragment();
+        customFoodFragment = new CustomFoodFragment();
 
+        tabLayout.setupWithViewPager(viewPager);
 
-            }
-        });
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),0);
+        adapter.addFragment(searchFragment,"Search");
+        adapter.addFragment(customFoodFragment,"Custom Food");
+        viewPager.setAdapter(adapter);
 
 
     }

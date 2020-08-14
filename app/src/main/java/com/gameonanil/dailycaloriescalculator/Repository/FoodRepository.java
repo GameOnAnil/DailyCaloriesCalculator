@@ -1,4 +1,4 @@
-package com.gameonanil.dailycaloriescalculator.Repo;
+package com.gameonanil.dailycaloriescalculator.Repository;
 
 import android.app.Application;
 import android.os.AsyncTask;

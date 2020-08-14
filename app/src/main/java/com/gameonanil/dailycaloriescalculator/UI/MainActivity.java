@@ -63,16 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         //initializing view model
 
-        foodViewModel = new ViewModelProvider(this,
-                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(FoodViewModel.class);
-        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
-            @Override
-            public void onChanged(List<Food> foods) {
-                Toast.makeText(MainActivity.this, "db created ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
 
         mCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     protected void onStart() {
