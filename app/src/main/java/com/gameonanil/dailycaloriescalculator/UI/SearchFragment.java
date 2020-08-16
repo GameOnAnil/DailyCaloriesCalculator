@@ -119,8 +119,8 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
             int foodCalorieValue = 0;
             foodCalorieValue = Integer.parseInt(foodCalorieScore.getText().toString());
             Intent intent = new Intent(getActivity(),MainActivity.class);
-            intent.putExtra("foodNameFromSearch", foodNameValue);
-            intent.putExtra("foodCalorieFromSearch", foodCalorieValue);
+            intent.putExtra("foodName", foodNameValue);
+            intent.putExtra("foodCalorie", foodCalorieValue);
             startActivity(intent);
 
         }

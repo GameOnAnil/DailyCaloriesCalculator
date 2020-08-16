@@ -139,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         Intent intent = getIntent();
-        if (intent.hasExtra("foodNameFromSearch")) {
-            String foodName = intent.getStringExtra("foodNameFromSearch");
-            int foodCalorie = intent.getIntExtra("foodCalorieFromSearch", 0);
+        if (intent.hasExtra("foodName")) {
+            String foodName = intent.getStringExtra("foodName");
+            int foodCalorie = intent.getIntExtra("foodCalorie", 0);
 
             if (foodCalorie != 0 && !foodName.isEmpty()) {
                 loadData();
