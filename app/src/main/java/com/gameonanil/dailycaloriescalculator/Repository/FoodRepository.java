@@ -1,6 +1,7 @@
 package com.gameonanil.dailycaloriescalculator.Repository;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
@@ -30,6 +31,10 @@ public class FoodRepository {
    public LiveData<List<Food>> getAllFood(){
      return   foodDao.getAllFood();
    }
+
+    public LiveData<List<Food>> getFilteredFood(String query ){
+        return   foodDao.getFilteredFood(query);
+    }
 
    public class InsertAsyncTask extends AsyncTask<Food,Void,Void>{
     private FoodDao foodDao;

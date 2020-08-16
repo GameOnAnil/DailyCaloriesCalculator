@@ -3,6 +3,8 @@ package com.gameonanil.dailycaloriescalculator.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,13 +14,14 @@ import com.gameonanil.dailycaloriescalculator.Model.Food;
 import com.gameonanil.dailycaloriescalculator.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodViewHolder> {
     List<Food> allFood = new ArrayList<>();
 
 
-    public void setNotes(List<Food> notes){
+    public void setFoods(List<Food> notes){
         allFood = notes;
         notifyDataSetChanged();
     }
@@ -40,14 +43,17 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodV
             holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories()));
 
 
+    }
 
-
+    public List<Food> getAllFood(){
+        return allFood;
     }
 
     @Override
     public int getItemCount() {
         return allFood.size();
     }
+
 
     public class AddFoodViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;

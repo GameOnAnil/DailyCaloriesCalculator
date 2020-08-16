@@ -19,4 +19,7 @@ public interface FoodDao {
 
     @Query("SELECT * FROM foods_table ORDER BY foodName ASC")
     LiveData<List<Food>> getAllFood();
+
+    @Query("SELECT * FROM foods_table WHERE foodName LIKE :foodText Order by foodName ASC")
+    LiveData<List<Food>> getFilteredFood(String foodText);
 }

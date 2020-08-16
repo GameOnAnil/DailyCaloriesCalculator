@@ -30,4 +30,8 @@ public class FoodViewModel extends AndroidViewModel {
     public LiveData<List<Food>> getAllFood(){
         return  foodRepository.getAllFood();
     }
+
+    public LiveData<List<Food>> getFilteredFood(String query){
+        return  foodRepository.getFilteredFood(query);
+    }
 }

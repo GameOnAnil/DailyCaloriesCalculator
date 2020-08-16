@@ -51,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         breakfastFoods = new ArrayList<>();
-        breakfastFoods.add(new BreakfastFood("Apple",100));
-        breakfastFoods.add(new BreakfastFood("Banana",100));
-        breakfastFoods.add(new BreakfastFood("Mango",200));
-
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mBreakfastAdapter = new BreakfastAdapter(breakfastFoods);
