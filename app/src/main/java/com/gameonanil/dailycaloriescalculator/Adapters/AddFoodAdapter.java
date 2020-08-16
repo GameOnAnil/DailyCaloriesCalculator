@@ -19,11 +19,22 @@ import java.util.List;
 
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodViewHolder> {
     List<Food> allFood = new ArrayList<>();
+    AddFoodListener addFoodListener;
 
+    public AddFoodAdapter(AddFoodListener addFoodListener) {
+        this.addFoodListener = addFoodListener;
+    }
 
     public void setFoods(List<Food> notes){
         allFood = notes;
         notifyDataSetChanged();
+    }
+
+    public Food getCurrentFood(int position){
+        Food currentFood = allFood.get(position);
+
+        return currentFood;
+
     }
 
 
@@ -63,6 +74,17 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodV
             super(itemView);
             foodName = itemView.findViewById(R.id.add_food_food_name);
             foodCalorie = itemView.findViewById(R.id.add_food_calorie);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addFoodListener.onItemClick(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface AddFoodListener{
+        public void onItemClick(int position);
     }
 }

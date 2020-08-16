@@ -37,7 +37,7 @@ public class CustomFoodFragment extends Fragment {
                     String foodName = mFoodName.getText().toString();
                     int foodCalorie = 0;
                     foodCalorie = Integer.parseInt(mFoodCalorie.getText().toString());
-                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
                     intent.putExtra("foodName", foodName);
                     intent.putExtra("foodCalorie", foodCalorie);
                     startActivity(intent);
