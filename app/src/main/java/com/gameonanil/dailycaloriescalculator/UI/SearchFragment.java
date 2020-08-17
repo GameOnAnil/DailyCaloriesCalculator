@@ -14,6 +14,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,12 +146,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if (item.getItemId() == android.R.id.home){
-//            getActivity().finish();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+
+
+
 }

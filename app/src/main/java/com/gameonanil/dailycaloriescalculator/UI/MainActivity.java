@@ -233,20 +233,21 @@ public class MainActivity extends AppCompatActivity {
             int foodCalorie = intent.getIntExtra("foodCalorie", 0);
             String foodType = intent.getStringExtra("foodType");
 
-            loadData();
+                loadData();
+                if (foodCalorie != 0 && !foodName.isEmpty() && !foodType.isEmpty()){
 
-            if (foodCalorie != 0 && !foodName.isEmpty() && !foodType.isEmpty()){
-
-                Log.d(TAG, "onStart: foodtype is: "+foodType);
-                if(foodType.equals(BREAKFAST_TYPE)){
-                    Log.d(TAG, "onStart: breakfast if is true is called");
-                    breakfastFoods.add(new BreakfastFood(foodName, foodCalorie));
-                }else if(foodType.equals(LUNCH_TYPE)){
-                    lunchFoods.add(new LunchFood(foodName, foodCalorie));
-                }else if(foodType.equals(DINNER_TYPE)){
-                    dinnerFoods.add(new DinnerFood(foodName, foodCalorie));
+                    Log.d(TAG, "onStart: foodtype is: "+foodType);
+                    if(foodType.equals(BREAKFAST_TYPE)){
+                        Log.d(TAG, "onStart: breakfast if is true is called");
+                        breakfastFoods.add(new BreakfastFood(foodName, foodCalorie));
+                    }else if(foodType.equals(LUNCH_TYPE)){
+                        lunchFoods.add(new LunchFood(foodName, foodCalorie));
+                    }else if(foodType.equals(DINNER_TYPE)){
+                        dinnerFoods.add(new DinnerFood(foodName, foodCalorie));
+                    }
                 }
-            }
+
+
             setupBreakfastRecyclerView();
             setupLunchRecyclerView();
             setupDinnerRecyclerView();

@@ -2,8 +2,12 @@ package com.gameonanil.dailycaloriescalculator.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
@@ -47,7 +51,11 @@ public class AddFood extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            Intent intent = new Intent(AddFood.this, MainActivity.class);
+            intent.putExtra("foodName", "");
+            intent.putExtra("foodCalorie", 0);
+            intent.putExtra("foodType","None");
+            startActivity(intent);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
