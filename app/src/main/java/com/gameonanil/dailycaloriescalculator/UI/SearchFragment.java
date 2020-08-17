@@ -118,10 +118,18 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
             String foodNameValue = foodNameScore.getText().toString();
             int foodCalorieValue = 0;
             foodCalorieValue = Integer.parseInt(foodCalorieScore.getText().toString());
-            Intent intent = new Intent(getActivity(),MainActivity.class);
-            intent.putExtra("foodName", foodNameValue);
-            intent.putExtra("foodCalorie", foodCalorieValue);
-            startActivity(intent);
+
+            Intent extraIntent = getActivity().getIntent();
+            String foodType = extraIntent.getStringExtra("Food Type");
+            Log.d(TAG, "saveValue: food type in search is "+foodType);
+
+
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                intent.putExtra("foodName", foodNameValue);
+                intent.putExtra("foodCalorie", foodCalorieValue);
+                intent.putExtra("foodType",foodType);
+                startActivity(intent);
+
 
         }
     }
