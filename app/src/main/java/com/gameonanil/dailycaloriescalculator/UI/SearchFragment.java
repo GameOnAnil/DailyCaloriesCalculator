@@ -121,14 +121,12 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
             Intent extraIntent = getActivity().getIntent();
             String foodType = extraIntent.getStringExtra("Food Type");
-            Log.d(TAG, "saveValue: food type in search is "+foodType);
 
-
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                intent.putExtra("foodName", foodNameValue);
-                intent.putExtra("foodCalorie", foodCalorieValue);
-                intent.putExtra("foodType",foodType);
-                startActivity(intent);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("foodName", foodNameValue);
+            intent.putExtra("foodCalorie", foodCalorieValue);
+            intent.putExtra("foodType", foodType);
+            startActivity(intent);
 
 
         }
