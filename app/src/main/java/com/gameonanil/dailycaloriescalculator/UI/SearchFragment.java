@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,16 +65,24 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         mRecyclerView = mainView.findViewById(R.id.recyclerView_add_food);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mAddFoodAdapter = new AddFoodAdapter(this);
-        mRecyclerView.setAdapter(mAddFoodAdapter);
 
         foodViewModel = new ViewModelProvider(this,
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(FoodViewModel.class);
-        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
-            @Override
-            public void onChanged(List<Food> foods) {
-                mAddFoodAdapter.setFoods(foods);
-            }
+
+
+        foodViewModel.foodList.observe(this, pagedList -> {
+            mAddFoodAdapter.setFoods(pagedList);
         });
+
+        mRecyclerView.setAdapter(mAddFoodAdapter);
+
+
+//        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
+//            @Override
+//            public void onChanged(List<Food> foods) {
+//                mAddFoodAdapter.setFoods(foods);
+//            }
+//        });
 
 
         searchET.addTextChangedListener(new TextWatcher() {
@@ -94,7 +103,8 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
                 foodViewModel.getFilteredFood(searchText).observe(getActivity(), new Observer<List<Food>>() {
                     @Override
                     public void onChanged(List<Food> foods) {
-                        mAddFoodAdapter.setFoods(foods);
+                        //mAddFoodAdapter.setFoods(foods);
+
                     }
                 });
 
@@ -145,8 +155,6 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
 
     }
-
-
 
 
 }

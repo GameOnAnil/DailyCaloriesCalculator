@@ -1,10 +1,10 @@
 package com.gameonanil.dailycaloriescalculator.Repository;
 
 import android.app.Application;
-import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 
 import com.gameonanil.dailycaloriescalculator.Model.Food;
 import com.gameonanil.dailycaloriescalculator.RoomDB.FoodDao;
@@ -15,9 +15,11 @@ import java.util.List;
 public class FoodRepository {
     FoodDao foodDao;
 
+
    public FoodRepository(Application application){
       FoodDatabase db = FoodDatabase.getInstance(application);
       foodDao = db.foodDao();
+
    }
 
    public void insert(Food food){
@@ -34,6 +36,10 @@ public class FoodRepository {
 
     public LiveData<List<Food>> getFilteredFood(String query ){
         return   foodDao.getFilteredFood(query);
+    }
+
+    public DataSource.Factory<Integer, Food> getPagedListLiveData(){
+       return foodDao.getAllPagedFood();
     }
 
    public class InsertAsyncTask extends AsyncTask<Food,Void,Void>{

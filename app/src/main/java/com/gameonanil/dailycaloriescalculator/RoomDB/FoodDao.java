@@ -1,6 +1,7 @@
 package com.gameonanil.dailycaloriescalculator.RoomDB;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,6 +20,9 @@ public interface FoodDao {
 
     @Query("SELECT * FROM foods_table ORDER BY foodName ASC")
     LiveData<List<Food>> getAllFood();
+
+    @Query("SELECT * FROM foods_table ORDER BY foodName ASC")
+    DataSource.Factory<Integer, Food> getAllPagedFood();
 
     @Query("SELECT * FROM foods_table WHERE foodName LIKE :foodText Order by foodName ASC")
     LiveData<List<Food>> getFilteredFood(String foodText);

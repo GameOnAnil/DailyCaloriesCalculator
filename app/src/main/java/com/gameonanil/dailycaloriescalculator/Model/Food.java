@@ -32,4 +32,13 @@ public class Food {
     public int getFoodCalories() {
         return foodCalories;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+
+        Food food = (Food) obj;
+        return food.id == this.id ;
+    }
 }

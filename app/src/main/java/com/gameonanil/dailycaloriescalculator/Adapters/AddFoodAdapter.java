@@ -1,5 +1,9 @@
 package com.gameonanil.dailycaloriescalculator.Adapters;
 
+import android.annotation.SuppressLint;
+import android.graphics.pdf.PdfRenderer;
+import android.renderscript.ScriptGroup;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +12,11 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.gameonanil.dailycaloriescalculator.Model.Food;
 import com.gameonanil.dailycaloriescalculator.R;
@@ -17,18 +25,37 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodViewHolder> {
+public class AddFoodAdapter extends PagedListAdapter<Food, AddFoodAdapter.AddFoodViewHolder> {
+    private static final String TAG = "AddFoodAdapter";
     List<Food> allFood = new ArrayList<>();
+
     AddFoodListener addFoodListener;
 
     public AddFoodAdapter(AddFoodListener addFoodListener) {
+        super(DIFF_CALLBACK);
         this.addFoodListener = addFoodListener;
     }
 
-    public void setFoods(List<Food> notes){
-        allFood = notes;
+    public static DiffUtil.ItemCallback<Food> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<Food>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull Food oldItem, @NonNull Food newItem) {
+                    return oldItem.getId() == newItem.getId();
+                }
+
+
+                @Override
+                public boolean areContentsTheSame(@NonNull Food oldItem, @NonNull Food newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+
+
+    public void setFoods(List<Food> foods){
+        allFood = foods;
         notifyDataSetChanged();
     }
+
 
     public Food getCurrentFood(int position){
         Food currentFood = allFood.get(position);
@@ -48,16 +75,16 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodV
 
     @Override
     public void onBindViewHolder(@NonNull AddFoodViewHolder holder, int position) {
-        Food currentFood = allFood.get(position);
+           //  Food currentFood = allFood.get(position);
+             Food currentFood = allFood.get(position);
+            Log.d(TAG, "onBindViewHolder: current food "+currentFood.getFoodName());
+             if(currentFood != null){
+                 holder.foodName.setText(currentFood.getFoodName());
+                 holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories()));
 
-            holder.foodName.setText(currentFood.getFoodName());
-            holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories()));
 
+             }
 
-    }
-
-    public List<Food> getAllFood(){
-        return allFood;
     }
 
     @Override
@@ -69,6 +96,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodV
     public class AddFoodViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
         TextView foodCalorie;
+
 
         public AddFoodViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +110,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.AddFoodV
                 }
             });
         }
+
     }
 
     public interface AddFoodListener{
