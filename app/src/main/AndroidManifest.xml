@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.AddFood"
-            android:parentActivityName=".UI.MainActivity"></activity>
+            android:parentActivityName=".UI.MainActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".UI.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
