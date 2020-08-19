@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private Button mAddBreakfast;
     private Button mAddLunch;
     private Button mAddDinner;
+
+    private FrameLayout mAddBreakfastFrame;
+    private FrameLayout mAddLunchFrame;
+    private FrameLayout mAddDinnerFrame;
+
     private Button mCalculate;
     private RecyclerView mBfRecyclerView;
     private RecyclerView mLuRecyclerView;
@@ -62,41 +68,24 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
+        mAddBreakfastFrame = findViewById(R.id.btn_add_breakfast_frame);
+        mAddLunchFrame = findViewById(R.id.btn_add_lunch_frame);
+        mAddDinnerFrame = findViewById(R.id.btn_add_dinner_frame);
+
         mAddBreakfast = findViewById(R.id.btn_add_breakfast);
         mAddLunch = findViewById(R.id.btn_add_lunch);
         mAddDinner = findViewById(R.id.btn_add_dinner);
         mCalculate = findViewById(R.id.btn_calculate);
-        mAddBreakfast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveData();
-                Intent intent = new Intent(MainActivity.this, AddFood.class);
-                intent.putExtra("Food Type",BREAKFAST_TYPE);
-                startActivity(intent);
-            }
-        });
 
-        mAddLunch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveData();
-                Intent intent = new Intent(MainActivity.this,AddFood.class);
-                intent.putExtra("Food Type",LUNCH_TYPE);
-                startActivity(intent);
+        //SETTING UP BUTTONS LISTENERS
+        setupButtons();
 
-            }
-        });
+        //setting up frame click listener
+        setupframeButtonListener();
 
-        mAddDinner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveData();
-                Intent intent = new Intent(MainActivity.this,AddFood.class);
-                intent.putExtra("Food Type",DINNER_TYPE);
-                startActivity(intent);
 
-            }
-        });
+
+
 
         breakfastFoods = new ArrayList<>();
         lunchFoods = new ArrayList<>();
@@ -144,6 +133,74 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setupframeButtonListener() {
+        mAddBreakfastFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this, AddFood.class);
+                intent.putExtra("Food Type",BREAKFAST_TYPE);
+                startActivity(intent);
+            }
+        });
+
+        mAddLunchFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this,AddFood.class);
+                intent.putExtra("Food Type",LUNCH_TYPE);
+                startActivity(intent);
+
+            }
+        });
+
+        mAddDinnerFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this,AddFood.class);
+                intent.putExtra("Food Type",DINNER_TYPE);
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    private void setupButtons() {
+        mAddBreakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this, AddFood.class);
+                intent.putExtra("Food Type",BREAKFAST_TYPE);
+                startActivity(intent);
+            }
+        });
+
+        mAddLunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this,AddFood.class);
+                intent.putExtra("Food Type",LUNCH_TYPE);
+                startActivity(intent);
+
+            }
+        });
+
+        mAddDinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+                Intent intent = new Intent(MainActivity.this,AddFood.class);
+                intent.putExtra("Food Type",DINNER_TYPE);
+                startActivity(intent);
+
+            }
+        });
     }
 
 

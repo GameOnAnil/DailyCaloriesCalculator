@@ -53,6 +53,8 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         mainView = inflater.inflate(R.layout.fragment_search, container, false);
         // Inflate the layout for this fragment
 
+        setHasOptionsMenu(true);
+
         searchET = mainView.findViewById(R.id.search_food);
         foodNameScore = mainView.findViewById(R.id.food_finalName);
         foodCalorieScore = mainView.findViewById(R.id.food_finalCalorie);
@@ -103,7 +105,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
                 foodViewModel.getFilteredFood(searchText).observe(getActivity(), new Observer<List<Food>>() {
                     @Override
                     public void onChanged(List<Food> foods) {
-                        //mAddFoodAdapter.setFoods(foods);
+                        mAddFoodAdapter.setFoods(foods);
 
                     }
                 });
@@ -122,7 +124,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         return mainView;
     }
 
-    private void saveValue() {
+    public void saveValue() {
 
         if (foodCalorieScore.getText().toString().isEmpty() || foodNameScore.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "Please enter food name and calorie first", Toast.LENGTH_SHORT).show();
@@ -157,4 +159,20 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.add_food_menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.save_item:
+                saveValue();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

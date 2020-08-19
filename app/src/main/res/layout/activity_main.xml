@@ -10,25 +10,27 @@
         android:id="@+id/text_lunch"
         android:layout_width="41dp"
         android:layout_height="18dp"
+        android:layout_marginStart="8dp"
         android:text="Lunch"
-        android:textColor="#000"
+        android:textColor="@color/colorPrimary"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView_lunch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_breakfast" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_breakfast_frame" />
 
     <TextView
         android:id="@+id/text_dinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:text="Dinner"
-        android:textColor="#000"
+        android:textColor="@color/colorPrimary"
         android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_lunch"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_lunch_frame"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_lunch" />
 
@@ -46,12 +48,13 @@
         android:id="@+id/text_breakfast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Breakfast"
-        android:textColor="#000"
+        android:textColor="@color/colorPrimary"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
@@ -59,89 +62,133 @@
         android:id="@+id/recyclerView_breakfast"
         android:layout_width="match_parent"
         android:layout_height="110dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_breakfast" />
 
-    <Button
-        android:id="@+id/btn_add_breakfast"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="12dp"
 
+    <FrameLayout
+        android:id="@+id/btn_add_breakfast_frame"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
-        android:drawableStart="@drawable/ic_add"
-        android:text="add breakfast"
-        android:textColor="#fff"
-        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_breakfast" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_breakfast">
+
+        <Button
+            android:id="@+id/btn_add_breakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_add"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="add breakfast"
+            android:textColor="#fff" />
+    </FrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_lunch"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_breakfast_frame" />
+
+
+    <FrameLayout
+        android:id="@+id/btn_add_lunch_frame"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_lunch">
+
+        <Button
+            android:id="@+id/btn_add_lunch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_add"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Add Lunch"
+            android:textColor="#fff" />
+    </FrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_dinner"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_dinner" />
+
+    <FrameLayout
+        android:id="@+id/btn_add_dinner_frame"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_dinner">
+
+        <Button
+            android:id="@+id/btn_add_dinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_add"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Add Dinner"
+            android:textColor="#fff" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/btn_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/primary_round_btn_bg"
+        android:padding="10dp"
         android:text="Calculate"
         android:textColor="#fff"
-        android:padding="10dp"
-        android:background="@drawable/primary_round_btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_lunch"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_breakfast" />
-
-    <Button
-        android:id="@+id/btn_add_lunch"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorAccent"
-        android:drawableStart="@drawable/ic_add"
-        android:text="Add Lunch"
-        android:textColor="#fff"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_lunch" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_dinner"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_lunch" />
-
-    <Button
-        android:id="@+id/btn_add_dinner"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="7dp"
-        android:background="@color/colorAccent"
-        android:drawableStart="@drawable/ic_add"
-        android:text="Add Dinner"
-        android:textColor="#fff"
-        android:padding="5dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_dinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -40,13 +42,14 @@ public class AddFood extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),0);
-        adapter.addFragment(searchFragment,"Search");
-        adapter.addFragment(customFoodFragment,"Custom Food");
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+        adapter.addFragment(searchFragment, "Search");
+        adapter.addFragment(customFoodFragment, "Custom Food");
         viewPager.setAdapter(adapter);
 
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -54,7 +57,7 @@ public class AddFood extends AppCompatActivity {
             Intent intent = new Intent(AddFood.this, MainActivity.class);
             intent.putExtra("foodName", "");
             intent.putExtra("foodCalorie", 0);
-            intent.putExtra("foodType","None");
+            intent.putExtra("foodType", "None");
             startActivity(intent);
             return true;
         } else {
