@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
+        android:theme="@style/Theme.AppCompat"
         app:title="Add Food" />
 
     <com.google.android.material.tabs.TabLayout
