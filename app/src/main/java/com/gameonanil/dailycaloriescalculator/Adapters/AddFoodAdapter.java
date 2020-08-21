@@ -80,7 +80,8 @@ public class AddFoodAdapter extends PagedListAdapter<Food, AddFoodAdapter.AddFoo
             Log.d(TAG, "onBindViewHolder: current food "+currentFood.getFoodName());
              if(currentFood != null){
                  holder.foodName.setText(currentFood.getFoodName());
-                 holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories()));
+                 holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories())+" kcal");
+                 holder.foodAmount.setText(currentFood.getFoodAmount());
 
 
              }
@@ -96,12 +97,14 @@ public class AddFoodAdapter extends PagedListAdapter<Food, AddFoodAdapter.AddFoo
     public class AddFoodViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
         TextView foodCalorie;
+        TextView foodAmount;
 
 
         public AddFoodViewHolder(@NonNull View itemView) {
             super(itemView);
             foodName = itemView.findViewById(R.id.add_food_food_name);
             foodCalorie = itemView.findViewById(R.id.add_food_calorie);
+            foodAmount = itemView.findViewById(R.id.add_food_food_amount);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

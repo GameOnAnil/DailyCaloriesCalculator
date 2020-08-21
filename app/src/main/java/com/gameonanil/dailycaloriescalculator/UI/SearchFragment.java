@@ -58,7 +58,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         searchET = mainView.findViewById(R.id.search_food);
         foodNameScore = mainView.findViewById(R.id.food_finalName);
         foodCalorieScore = mainView.findViewById(R.id.food_finalCalorie);
-        saveBtn = mainView.findViewById(R.id.save_food_search);
+
 
         foodNameScore.setText("");
         foodCalorieScore.setText("");
@@ -66,6 +66,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
         mRecyclerView = mainView.findViewById(R.id.recyclerView_add_food);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setHasFixedSize(false);
         mAddFoodAdapter = new AddFoodAdapter(this);
 
         foodViewModel = new ViewModelProvider(this,
@@ -77,14 +78,6 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         });
 
         mRecyclerView.setAdapter(mAddFoodAdapter);
-
-
-//        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
-//            @Override
-//            public void onChanged(List<Food> foods) {
-//                mAddFoodAdapter.setFoods(foods);
-//            }
-//        });
 
 
         searchET.addTextChangedListener(new TextWatcher() {
@@ -113,12 +106,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveValue();
-            }
-        });
+
 
 
         return mainView;

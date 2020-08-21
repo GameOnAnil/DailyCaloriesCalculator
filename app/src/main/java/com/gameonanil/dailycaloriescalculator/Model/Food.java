@@ -9,13 +9,15 @@ public class Food {
     private int id;
 
     private String foodName;
-
+    private String foodAmount;
     private int foodCalories;
 
-    public Food(String foodName, int  foodCalories) {
+    public Food(String foodName,String foodAmount, int  foodCalories) {
         this.foodName = foodName;
         this.foodCalories = foodCalories;
+        this.foodAmount = foodAmount;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -27,6 +29,10 @@ public class Food {
 
     public String getFoodName() {
         return foodName;
+    }
+
+    public String getFoodAmount() {
+        return foodAmount;
     }
 
     public int getFoodCalories() {
