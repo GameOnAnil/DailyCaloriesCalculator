@@ -21,6 +21,7 @@ public class CustomFoodFragment extends Fragment {
     View mainView;
     EditText mFoodName;
     EditText mFoodCalorie;
+    EditText mFoodQuantity;
     Button saveBtn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,6 +33,8 @@ public class CustomFoodFragment extends Fragment {
 
         mFoodName = mainView.findViewById(R.id.enter_name);
         mFoodCalorie = mainView.findViewById(R.id.enter_calorie);
+        mFoodQuantity = mainView.findViewById(R.id.enter_quantity);
+
         saveBtn = mainView.findViewById(R.id.save_food_custom);
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,10 +50,18 @@ public class CustomFoodFragment extends Fragment {
     private void saveFood(){
         if (mFoodName.getText().toString().equals("") || mFoodCalorie.getText().toString().equals("")) {
             Toast.makeText(getContext(), "Please enter food name and calories", Toast.LENGTH_SHORT).show();
-        } else {
+        } else if (mFoodQuantity.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Please enter food Quantity", Toast.LENGTH_SHORT).show();
+        }
+         else {
             String foodName = mFoodName.getText().toString();
             int foodCalorie = 0;
+            String foodAmount = "1";
+            int foodQuantity = 0;
+
             foodCalorie = Integer.parseInt(mFoodCalorie.getText().toString());
+            foodQuantity = Integer.parseInt(mFoodQuantity.getText().toString());
+
 
             Intent extraIntent = getActivity().getIntent();
             String foodType = extraIntent.getStringExtra("Food Type");
@@ -59,6 +70,8 @@ public class CustomFoodFragment extends Fragment {
             intent.putExtra("foodName", foodName);
             intent.putExtra("foodCalorie", foodCalorie);
             intent.putExtra("foodType", foodType);
+            intent.putExtra("foodAmount", foodAmount);
+            intent.putExtra("foodQuantity", foodQuantity);
             startActivity(intent);
         }
     }

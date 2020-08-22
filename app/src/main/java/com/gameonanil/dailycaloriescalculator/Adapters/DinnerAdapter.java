@@ -40,7 +40,7 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.BreakfastV
         holder.foodname.setText(dinnerFoods.get(position).getFoodName());
         holder.foodCalorie.setText(dinnerFoods.get(position).getFoodCalorie()+" cal");
         holder.foodAmount.setText(dinnerFoods.get(position).getFoodAmount());
-        holder.foodQuantity.setText("x"+dinnerFoods.get(position).getFoodQuantity());
+        holder.foodQuantity.setText("Quantity: x"+dinnerFoods.get(position).getFoodQuantity());
     }
 
     @Override
