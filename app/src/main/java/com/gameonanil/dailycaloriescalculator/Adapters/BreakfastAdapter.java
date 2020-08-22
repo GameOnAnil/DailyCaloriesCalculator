@@ -38,8 +38,10 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
 //        Log.d(TAG, "onBindViewHolder: breakfastFoods.get(position).getFoodName() "+breakfastFoods.get(position).getFoodName());
 //        Log.d(TAG, "onBindViewHolder: breakfastcalorie.get(position).getFoodName() "+breakfastFoods.get(position).getFoodCalorie());
 
-        holder.foodname.setText(breakfastFoods.get(position).getFoodName());
-        holder.foodCalorie.setText(String.valueOf(breakfastFoods.get(position).getFoodCalorie())+" cal");
+        holder.foodName.setText(breakfastFoods.get(position).getFoodName());
+        holder.foodCalorie.setText(breakfastFoods.get(position).getFoodCalorie() +" cal");
+        holder.foodAmount.setText(breakfastFoods.get(position).getFoodAmount());
+        holder.foodQuantity.setText("Quantity: x"+breakfastFoods.get(position).getFoodQuantity());
     }
 
     @Override
@@ -48,12 +50,16 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
     }
 
     public class BreakfastViewHolder extends RecyclerView.ViewHolder{
-        TextView foodname;
+        TextView foodName;
         TextView foodCalorie;
+        TextView foodAmount;
+        TextView foodQuantity;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
-            foodname = itemView.findViewById(R.id.breakfast_food_name);
+            foodName = itemView.findViewById(R.id.breakfast_food_name);
             foodCalorie = itemView.findViewById(R.id.breakfast_calorie);
+            foodAmount = itemView.findViewById(R.id.breakfast_food_amount);
+            foodQuantity = itemView.findViewById(R.id.breakfast_quantity);
         }
     }
 }

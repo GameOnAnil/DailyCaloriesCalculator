@@ -39,6 +39,8 @@ public class LunchAdapter extends RecyclerView.Adapter<LunchAdapter.BreakfastVie
 
         holder.foodname.setText(lunchFoods.get(position).getFoodName());
         holder.foodCalorie.setText(String.valueOf(lunchFoods.get(position).getFoodCalorie())+" cal");
+        holder.foodAmount.setText(lunchFoods.get(position).getFoodAmount());
+        holder.foodQuantity.setText("Quantity: x"+lunchFoods.get(position).getFoodQuantity());
     }
 
     @Override
@@ -49,10 +51,14 @@ public class LunchAdapter extends RecyclerView.Adapter<LunchAdapter.BreakfastVie
     public class BreakfastViewHolder extends RecyclerView.ViewHolder{
         TextView foodname;
         TextView foodCalorie;
+        TextView foodAmount;
+        TextView foodQuantity;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.lunch_food_name);
             foodCalorie = itemView.findViewById(R.id.lunch_calorie);
+            foodAmount = itemView.findViewById(R.id.lunch_food_amount);
+            foodQuantity = itemView.findViewById(R.id.lunch_quantity);
         }
     }
 }

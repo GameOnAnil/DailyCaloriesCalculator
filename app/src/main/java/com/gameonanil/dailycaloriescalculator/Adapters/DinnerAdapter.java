@@ -38,7 +38,9 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.BreakfastV
 //        Log.d(TAG, "onBindViewHolder: breakfastcalorie.get(position).getFoodName() "+breakfastFoods.get(position).getFoodCalorie());
 
         holder.foodname.setText(dinnerFoods.get(position).getFoodName());
-        holder.foodCalorie.setText(String.valueOf(dinnerFoods.get(position).getFoodCalorie())+" cal");
+        holder.foodCalorie.setText(dinnerFoods.get(position).getFoodCalorie()+" cal");
+        holder.foodAmount.setText(dinnerFoods.get(position).getFoodAmount());
+        holder.foodQuantity.setText("x"+dinnerFoods.get(position).getFoodQuantity());
     }
 
     @Override
@@ -49,10 +51,14 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.BreakfastV
     public class BreakfastViewHolder extends RecyclerView.ViewHolder{
         TextView foodname;
         TextView foodCalorie;
+        TextView foodAmount;
+        TextView foodQuantity;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.dinner_food_name);
             foodCalorie = itemView.findViewById(R.id.dinner_calorie);
+            foodAmount = itemView.findViewById(R.id.dinner_food_amount);
+            foodQuantity = itemView.findViewById(R.id.dinner_quantity);
         }
     }
 }

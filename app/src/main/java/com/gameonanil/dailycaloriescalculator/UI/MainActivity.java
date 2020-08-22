@@ -109,15 +109,15 @@ public class MainActivity extends AppCompatActivity {
                 int totalLunch = 0;
                 int totalDinner = 0;
                 for (int i = 0; i < breakfastFoods.size(); i++) {
-                    totalBreakFast += breakfastFoods.get(i).getFoodCalorie();
+                    totalBreakFast += breakfastFoods.get(i).getFoodCalorie()*breakfastFoods.get(i).getFoodQuantity();
 
                 }
                 for (int i = 0; i < lunchFoods.size(); i++) {
-                    totalLunch += lunchFoods.get(i).getFoodCalorie();
+                    totalLunch += lunchFoods.get(i).getFoodCalorie()*lunchFoods.get(i).getFoodQuantity();
 
                 }
                 for (int i = 0; i < dinnerFoods.size(); i++) {
-                    totalDinner += dinnerFoods.get(i).getFoodCalorie();
+                    totalDinner += dinnerFoods.get(i).getFoodCalorie()*dinnerFoods.get(i).getFoodQuantity();
 
                 }
                 int finalTotal = totalBreakFast+totalLunch+totalDinner;
@@ -289,6 +289,8 @@ public class MainActivity extends AppCompatActivity {
             String foodName = intent.getStringExtra("foodName");
             int foodCalorie = intent.getIntExtra("foodCalorie", 0);
             String foodType = intent.getStringExtra("foodType");
+            String foodAmount = intent.getStringExtra("foodAmount");
+            int foodQuantity = intent.getIntExtra("foodQuantity",1);
 
                 loadData();
                 if (foodCalorie != 0 && !foodName.isEmpty() && !foodType.isEmpty()){
@@ -296,11 +298,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "onStart: foodtype is: "+foodType);
                     if(foodType.equals(BREAKFAST_TYPE)){
                         Log.d(TAG, "onStart: breakfast if is true is called");
-                        breakfastFoods.add(new BreakfastFood(foodName, foodCalorie));
+                        breakfastFoods.add(new BreakfastFood(foodName, foodCalorie,foodAmount,foodQuantity));
                     }else if(foodType.equals(LUNCH_TYPE)){
-                        lunchFoods.add(new LunchFood(foodName, foodCalorie));
+                        lunchFoods.add(new LunchFood(foodName, foodCalorie,foodAmount,foodQuantity));
                     }else if(foodType.equals(DINNER_TYPE)){
-                        dinnerFoods.add(new DinnerFood(foodName, foodCalorie));
+                        dinnerFoods.add(new DinnerFood(foodName, foodCalorie,foodAmount,foodQuantity));
                     }
                 }
 

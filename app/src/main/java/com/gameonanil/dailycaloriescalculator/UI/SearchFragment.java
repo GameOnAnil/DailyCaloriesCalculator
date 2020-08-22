@@ -43,8 +43,10 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
     private FoodViewModel foodViewModel;
     private TextView foodNameScore;
     private TextView foodCalorieScore;
+    private EditText foodQuantityET;
     private Button saveBtn;
     private ArrayList<BreakfastFood> breakfastFoods;
+    String mFoodAmount;
 
 
     @Override
@@ -58,6 +60,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         searchET = mainView.findViewById(R.id.search_food);
         foodNameScore = mainView.findViewById(R.id.food_finalName);
         foodCalorieScore = mainView.findViewById(R.id.food_finalCalorie);
+        foodQuantityET = mainView.findViewById(R.id.enter_food_quantity);
 
 
         foodNameScore.setText("");
@@ -119,15 +122,21 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
         } else {
             String foodNameValue = foodNameScore.getText().toString();
             int foodCalorieValue = 0;
+            int foodQuantity = 0;
             foodCalorieValue = Integer.parseInt(foodCalorieScore.getText().toString());
+            String foodAmount = mFoodAmount;
 
             Intent extraIntent = getActivity().getIntent();
             String foodType = extraIntent.getStringExtra("Food Type");
+            foodQuantity = Integer.parseInt(foodQuantityET.getText().toString() );
+
 
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("foodName", foodNameValue);
             intent.putExtra("foodCalorie", foodCalorieValue);
             intent.putExtra("foodType", foodType);
+            intent.putExtra("foodAmount",foodAmount);
+            intent.putExtra("foodQuantity",foodQuantity);
             startActivity(intent);
 
 
@@ -142,6 +151,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
         foodNameScore.setText(foodName);
         foodCalorieScore.setText(String.valueOf(foodCalorie));
+        mFoodAmount = mAddFoodAdapter.getCurrentFood(position).getFoodAmount();
 
 
     }
