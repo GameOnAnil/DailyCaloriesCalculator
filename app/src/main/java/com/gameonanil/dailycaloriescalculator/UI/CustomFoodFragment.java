@@ -16,12 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.gameonanil.dailycaloriescalculator.R;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class CustomFoodFragment extends Fragment {
     View mainView;
-    EditText mFoodName;
-    EditText mFoodCalorie;
-    EditText mFoodQuantity;
+    TextInputEditText mFoodName;
+    TextInputEditText mFoodCalorie;
+    TextInputEditText mFoodQuantity;
     Button saveBtn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

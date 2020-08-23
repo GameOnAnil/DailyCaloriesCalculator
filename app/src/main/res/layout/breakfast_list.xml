@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     >
 
     <TextView
@@ -22,10 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Food Calorie"
+        android:textColor="@color/mainOrange"
         android:layout_toStartOf="@+id/delete_image_breakfast"
-
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="10dp"
+
         />
 
     <ImageView
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:text="Food Amount"
         android:textSize="10dp"
+        android:textColor="@color/blue"
         android:layout_below="@id/breakfast_food_name"
         android:layout_marginStart="10dp"
         />
@@ -51,11 +54,11 @@
         android:layout_height="wrap_content"
         android:text="Food Quantity"
         android:textSize="10dp"
+        android:textColor="@color/blue"
         android:layout_toStartOf="@+id/delete_image_breakfast"
-
         android:layout_marginTop="20dp"
         android:layout_marginBottom="2dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="15dp"
 
         />
 

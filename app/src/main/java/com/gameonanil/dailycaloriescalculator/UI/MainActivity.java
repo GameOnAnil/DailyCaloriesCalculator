@@ -88,9 +88,6 @@ public class MainActivity extends AppCompatActivity implements BreakfastAdapter.
         setupframeButtonListener();
 
 
-
-
-
         breakfastFoods = new ArrayList<>();
         lunchFoods = new ArrayList<>();
         dinnerFoods = new ArrayList<>();
@@ -107,8 +104,6 @@ public class MainActivity extends AppCompatActivity implements BreakfastAdapter.
 
 
        setupAllItemTouchHelper();
-
-
 
 
         //initializing view model

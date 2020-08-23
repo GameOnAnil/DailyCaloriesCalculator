@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.MainActivity">
+    tools:context=".UI.MainActivity"
+   >
 
     <TextView
         android:id="@+id/text_lunch"
-        android:layout_width="41dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingStart="10dp"
         android:text="Lunch"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/mainOrange"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView_lunch"
+        android:gravity="center_vertical"
+        android:background="@color/lightGray"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,37 +25,39 @@
 
     <TextView
         android:id="@+id/text_dinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingStart="10dp"
         android:text="Dinner"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/mainOrange"
         android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_lunch_frame"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:gravity="center_vertical"
+        android:background="@color/lightGray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_lunch" />
+        app:layout_constraintTop_toBottomOf="@id/btn_add_lunch_frame" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/mainOrange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Main Page" />
+        app:title="Main Page"
+        android:theme="@style/Theme.AppCompat"/>
 
     <TextView
         android:id="@+id/text_breakfast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Breakfast"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/mainOrange"
         android:textSize="15dp"
+        android:gravity="center_vertical"
+        android:background="@color/lightGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +83,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/mainOrange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_breakfast">
@@ -103,12 +108,12 @@
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_breakfast_frame" />
+        app:layout_constraintTop_toBottomOf="@+id/text_lunch" />
 
 
     <FrameLayout
@@ -118,7 +123,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/mainOrange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_lunch">
@@ -157,7 +162,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/mainOrange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_dinner">

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UI.SearchFragment">
+    tools:context=".UI.SearchFragment"
+    >
 
     <EditText
         android:id="@+id/search_food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+
         android:layout_marginEnd="8dp"
         android:hint="Search Food"
         android:imeOptions="actionDone"
@@ -24,7 +25,8 @@
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/mainOrange">
 
         <TextView
             android:id="@+id/food_Name"
@@ -34,7 +36,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Food Name:  "
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
             />
 
@@ -54,7 +56,8 @@
         android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/mainOrange">
         <TextView
             android:id="@+id/food_Calorie"
             android:layout_width="wrap_content"
@@ -63,7 +66,7 @@
             android:layout_marginStart="16dp"
 
             android:text="Food Calorie:  "
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/food_finalName" />
@@ -76,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
 
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
              />
     </LinearLayout>
@@ -85,14 +88,15 @@
         android:id="@+id/linear3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/mainOrange">
         <TextView
             android:id="@+id/food_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Food Quantity:  "
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/food_finalName" />
@@ -106,7 +110,7 @@
             android:inputType="number"
             android:hint="Enter Quantity"
             android:text="1"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="16dp"
             android:focusedByDefault="false"
             android:imeOptions="actionDone"
@@ -124,9 +128,6 @@
         android:id="@+id/recyclerView_add_food"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
 
         />

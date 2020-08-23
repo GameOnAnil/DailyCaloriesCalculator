@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.AddFood"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@style/AppTheme">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_add_food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/mainOrange"
         android:theme="@style/Theme.AppCompat"
         app:title="Add Food" />
 
@@ -19,8 +20,8 @@
         android:id="@+id/tabLayout_add_food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:theme="@style/Theme.AppCompat"
+        android:background="@color/mainOrange"
+        android:theme="@style/AppThemeWhite"
         >
 
     </com.google.android.material.tabs.TabLayout>
