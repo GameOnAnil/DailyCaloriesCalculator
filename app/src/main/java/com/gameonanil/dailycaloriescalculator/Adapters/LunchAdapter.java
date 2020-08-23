@@ -3,6 +3,7 @@ package com.gameonanil.dailycaloriescalculator.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,11 @@ public class LunchAdapter extends RecyclerView.Adapter<LunchAdapter.BreakfastVie
     private static final String TAG = "LunchAdapter";
 
     ArrayList<LunchFood> lunchFoods;
+    LunchListener lunchListener;
 
-    public LunchAdapter(ArrayList<LunchFood> lunchFoods) {
+    public LunchAdapter(ArrayList<LunchFood> lunchFoods,LunchListener lunchListener) {
         this.lunchFoods = lunchFoods;
+        this.lunchListener = lunchListener;
     }
 
     @NonNull
@@ -53,12 +56,25 @@ public class LunchAdapter extends RecyclerView.Adapter<LunchAdapter.BreakfastVie
         TextView foodCalorie;
         TextView foodAmount;
         TextView foodQuantity;
+        ImageView deleteIV;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.lunch_food_name);
             foodCalorie = itemView.findViewById(R.id.lunch_calorie);
             foodAmount = itemView.findViewById(R.id.lunch_food_amount);
             foodQuantity = itemView.findViewById(R.id.lunch_quantity);
+            deleteIV = itemView.findViewById(R.id.delete_image_lunch);
+
+            deleteIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    lunchListener.deleteItemLunch(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface LunchListener{
+        void deleteItemLunch(int position);
     }
 }

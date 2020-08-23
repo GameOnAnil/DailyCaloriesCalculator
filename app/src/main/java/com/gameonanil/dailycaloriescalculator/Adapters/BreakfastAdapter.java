@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,9 +21,11 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
     private static final String TAG = "BreakfastAdapter";
 
     ArrayList<BreakfastFood> breakfastFoods;
+    BreakfastListener breakfastListener;
 
-    public BreakfastAdapter(ArrayList<BreakfastFood> breakfastFoods) {
+    public BreakfastAdapter(ArrayList<BreakfastFood> breakfastFoods,BreakfastListener breakfastListener) {
         this.breakfastFoods = breakfastFoods;
+        this.breakfastListener = breakfastListener;
     }
 
     @NonNull
@@ -42,6 +45,8 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
         holder.foodCalorie.setText(breakfastFoods.get(position).getFoodCalorie() +" cal");
         holder.foodAmount.setText(breakfastFoods.get(position).getFoodAmount());
         holder.foodQuantity.setText("Quantity: x"+breakfastFoods.get(position).getFoodQuantity());
+
+
     }
 
     @Override
@@ -54,12 +59,25 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
         TextView foodCalorie;
         TextView foodAmount;
         TextView foodQuantity;
+        ImageView deleteIV;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
             foodName = itemView.findViewById(R.id.breakfast_food_name);
             foodCalorie = itemView.findViewById(R.id.breakfast_calorie);
             foodAmount = itemView.findViewById(R.id.breakfast_food_amount);
             foodQuantity = itemView.findViewById(R.id.breakfast_quantity);
+            deleteIV = itemView.findViewById(R.id.delete_image_breakfast);
+
+            deleteIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    breakfastListener.deleteItemBreakfast(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface BreakfastListener{
+        void deleteItemBreakfast(int position);
     }
 }

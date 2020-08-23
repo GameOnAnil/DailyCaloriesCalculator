@@ -118,5 +118,6 @@ public class AddFoodAdapter extends PagedListAdapter<Food, AddFoodAdapter.AddFoo
 
     public interface AddFoodListener{
         public void onItemClick(int position);
+
     }
 }

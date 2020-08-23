@@ -1,10 +1,12 @@
 package com.gameonanil.dailycaloriescalculator.UI;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,19 +26,19 @@ import com.gameonanil.dailycaloriescalculator.Adapters.DinnerAdapter;
 import com.gameonanil.dailycaloriescalculator.Adapters.LunchAdapter;
 import com.gameonanil.dailycaloriescalculator.Model.BreakfastFood;
 import com.gameonanil.dailycaloriescalculator.Model.DinnerFood;
-import com.gameonanil.dailycaloriescalculator.Model.Food;
 import com.gameonanil.dailycaloriescalculator.Model.LunchFood;
 import com.gameonanil.dailycaloriescalculator.R;
-import com.gameonanil.dailycaloriescalculator.ViewModel.FoodViewModel;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
+public class MainActivity extends AppCompatActivity implements BreakfastAdapter.BreakfastListener, LunchAdapter.LunchListener, DinnerAdapter.DinnerListener {
     private static final String TAG = "MainActivity";
     private Button mAddBreakfast;
     private Button mAddLunch;
@@ -95,9 +99,17 @@ public class MainActivity extends AppCompatActivity {
         mLuRecyclerView = findViewById(R.id.recyclerView_lunch);
         mDiRecyclerView = findViewById(R.id.recyclerView_dinner);
 
+
+
        setupBreakfastRecyclerView();
        setupLunchRecyclerView();
        setupDinnerRecyclerView();
+
+
+       setupAllItemTouchHelper();
+
+
+
 
         //initializing view model
 
@@ -132,6 +144,91 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void setupAllItemTouchHelper() {
+        ItemTouchHelper.SimpleCallback simpleCallbackBreakfast = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                breakfastFoods.remove(viewHolder.getAdapterPosition());
+                mBreakfastAdapter.notifyDataSetChanged();
+
+            }
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.red))
+                        .addActionIcon(R.drawable.ic_delete)
+                        .create()
+                        .decorate();
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+
+        ItemTouchHelper.SimpleCallback simpleCallbackLunch = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                lunchFoods.remove(viewHolder.getAdapterPosition());
+                mLunchAdapter.notifyDataSetChanged();
+
+            }
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.red))
+                        .addActionIcon(R.drawable.ic_delete)
+                        .create()
+                        .decorate();
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+
+        ItemTouchHelper.SimpleCallback simpleCallbackDinner = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                dinnerFoods.remove(viewHolder.getAdapterPosition());
+                mDinnerAdapter.notifyDataSetChanged();
+
+            }
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.red))
+                        .addActionIcon(R.drawable.ic_delete)
+                        .create()
+                        .decorate();
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        };
+
+
+        ItemTouchHelper itemTouchHelperBreakfast = new ItemTouchHelper(simpleCallbackBreakfast);
+        itemTouchHelperBreakfast.attachToRecyclerView(mBfRecyclerView);
+
+        ItemTouchHelper itemTouchHelperLunch = new ItemTouchHelper(simpleCallbackLunch);
+        itemTouchHelperLunch.attachToRecyclerView(mLuRecyclerView);
+
+        ItemTouchHelper itemTouchHelperDinner = new ItemTouchHelper(simpleCallbackDinner);
+        itemTouchHelperDinner.attachToRecyclerView(mDiRecyclerView);
 
     }
 
@@ -205,19 +302,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setupBreakfastRecyclerView(){
-        mBreakfastAdapter = new BreakfastAdapter(breakfastFoods);
+        mBreakfastAdapter = new BreakfastAdapter(breakfastFoods,this);
         mBfRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mBfRecyclerView.setAdapter(mBreakfastAdapter);
+
+
     }
 
     public void setupLunchRecyclerView(){
-        mLunchAdapter = new LunchAdapter(lunchFoods);
+        mLunchAdapter = new LunchAdapter(lunchFoods,this);
         mLuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mLuRecyclerView.setAdapter(mLunchAdapter);
     }
 
     public void setupDinnerRecyclerView(){
-        mDinnerAdapter = new DinnerAdapter(dinnerFoods);
+        mDinnerAdapter = new DinnerAdapter(dinnerFoods,this);
         mDiRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDiRecyclerView.setAdapter(mDinnerAdapter);
     }
@@ -316,4 +415,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void deleteItemBreakfast(int position) {
+        breakfastFoods.remove(position);
+        mBreakfastAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void deleteItemDinner(int position) {
+        dinnerFoods.remove(position);
+        mDinnerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void deleteItemLunch(int position) {
+        lunchFoods.remove(position);
+        mLunchAdapter.notifyDataSetChanged();
+
+    }
 }

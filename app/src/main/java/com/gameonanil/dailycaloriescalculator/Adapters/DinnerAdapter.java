@@ -3,6 +3,7 @@ package com.gameonanil.dailycaloriescalculator.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,11 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.BreakfastV
     private static final String TAG = "DinnerAdapter";
 
     ArrayList<DinnerFood> dinnerFoods;
+    DinnerListener dinnerListener;
 
-    public DinnerAdapter(ArrayList<DinnerFood> dinnerFoods) {
+    public DinnerAdapter(ArrayList<DinnerFood> dinnerFoods,DinnerListener dinnerListener) {
         this.dinnerFoods = dinnerFoods;
+        this.dinnerListener = dinnerListener;
     }
 
     @NonNull
@@ -53,12 +56,24 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.BreakfastV
         TextView foodCalorie;
         TextView foodAmount;
         TextView foodQuantity;
+        ImageView deleteIV;
         public BreakfastViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.dinner_food_name);
             foodCalorie = itemView.findViewById(R.id.dinner_calorie);
             foodAmount = itemView.findViewById(R.id.dinner_food_amount);
             foodQuantity = itemView.findViewById(R.id.dinner_quantity);
+            deleteIV = itemView.findViewById(R.id.delete_image_dinner);
+
+            deleteIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dinnerListener.deleteItemDinner(getAdapterPosition());
+                }
+            });
         }
+    }
+    public interface DinnerListener{
+        void deleteItemDinner(int position);
     }
 }
