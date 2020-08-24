@@ -439,4 +439,9 @@ public class MainActivity extends AppCompatActivity implements BreakfastAdapter.
         mLunchAdapter.notifyDataSetChanged();
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

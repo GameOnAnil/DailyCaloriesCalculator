@@ -142,6 +142,7 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
             intent.putExtra("foodAmount",foodAmount);
             intent.putExtra("foodQuantity",foodQuantity);
             startActivity(intent);
+            getActivity().finish();
 
 
         }

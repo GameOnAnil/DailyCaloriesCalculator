@@ -87,6 +87,7 @@ public class CustomFoodFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.save_item){
             saveFood();
+            getActivity().finish();
             return true;
         }else{
             return super.onOptionsItemSelected(item);
