@@ -20,18 +20,18 @@
         android:id="@+id/text_breakfast"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginTop="16dp"
         android:background="@color/lightGray"
-
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:text="Breakfast"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="15dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_breakfast"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="130dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp" />
@@ -69,14 +69,17 @@
         android:paddingStart="10dp"
         android:text="Lunch"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="15dp"
+
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_lunch"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="130dp"
         android:layout_marginStart="8dp"
+
         android:layout_marginEnd="8dp" />
 
 
@@ -112,13 +115,13 @@
         android:paddingStart="10dp"
         android:text="Dinner"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="15dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_dinner"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="130dp"
         android:layout_marginStart="8dp"
 
         android:layout_marginEnd="8dp" />
@@ -156,19 +159,14 @@
             android:id="@+id/btn_calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/primary_round_btn_bg"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:padding="10dp"
             android:text="Calculate"
             android:textColor="#fff" />
+
+
     </LinearLayout>
 
 
 </LinearLayout>
-
-
-

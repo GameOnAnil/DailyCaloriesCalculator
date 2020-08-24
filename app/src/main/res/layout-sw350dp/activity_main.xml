@@ -19,32 +19,31 @@
     <TextView
         android:id="@+id/text_breakfast"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:background="@color/lightGray"
 
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:text="Breakfast"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="17dp"
+        tools:layout_editor_absoluteY="56dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_breakfast"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_height="110dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="85dp" />
 
 
     <FrameLayout
         android:id="@+id/btn_add_breakfast_frame"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/mainOrange">
+        android:layout_height="30dp"
+        android:background="@color/mainOrange"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="200dp">
 
         <Button
             android:id="@+id/btn_add_breakfast"
@@ -63,31 +62,33 @@
     <TextView
         android:id="@+id/text_lunch"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:background="@color/lightGray"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:text="Lunch"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="17dp"
+
+        tools:layout_editor_absoluteY="230dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_lunch"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_height="110dp"
+
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="256dp" />
 
 
     <FrameLayout
         android:id="@+id/btn_add_lunch_frame"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/mainOrange">
+        android:layout_height="30dp"
+        android:background="@color/mainOrange"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="371dp">
 
         <Button
             android:id="@+id/btn_add_lunch"
@@ -109,28 +110,28 @@
         android:layout_height="30dp"
         android:background="@color/lightGray"
         android:gravity="center_vertical"
-        android:paddingStart="10dp"
+        android:paddingStart="15dp"
         android:text="Dinner"
         android:textColor="@color/mainOrange"
-        android:textSize="18dp" />
+        android:textSize="17dp"
+        tools:layout_editor_absoluteY="401dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_dinner"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="110dp"
 
-        android:layout_marginEnd="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="431dp" />
 
     <FrameLayout
         android:id="@+id/btn_add_dinner_frame"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/mainOrange">
+        android:layout_height="30dp"
+        android:background="@color/mainOrange"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="546dp">
 
         <Button
             android:id="@+id/btn_add_dinner"
@@ -155,7 +156,7 @@
         <Button
             android:id="@+id/btn_calculate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
 
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
@@ -169,6 +170,7 @@
 
 
 </LinearLayout>
+
 
 
 

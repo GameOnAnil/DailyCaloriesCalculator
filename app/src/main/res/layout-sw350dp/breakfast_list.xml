@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <TextView
+        android:id="@+id/breakfast_food_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Food Name"
+        android:textColor="#000"
+        android:layout_toLeftOf="@+id/breakfast_calorie"
+
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="10dp"
+
+        />
+
+    <TextView
+        android:id="@+id/breakfast_calorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Calorie"
+        android:textColor="@color/mainOrange"
+        android:layout_toStartOf="@+id/delete_image_breakfast"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="10dp"
+
+        />
+
+    <ImageView
+        android:id="@+id/delete_image_breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_delete_black" />
+
+    <TextView
+        android:id="@+id/breakfast_food_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Amount"
+        android:textSize="10dp"
+        android:textColor="@color/blue"
+        android:layout_below="@id/breakfast_food_name"
+        android:layout_marginStart="10dp"
+        />
+
+    <TextView
+        android:id="@+id/breakfast_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Quantity"
+        android:textSize="10dp"
+        android:textColor="@color/blue"
+        android:layout_toStartOf="@+id/delete_image_breakfast"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="15dp"
+
+        />
+
+</RelativeLayout>

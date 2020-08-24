@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.AddFood"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainOrange"
+        android:theme="@style/Theme.AppCompat"
+        app:title="Add Food" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout_add_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainOrange"
+        android:theme="@style/AppThemeWhite"
+        >
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_addFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>
