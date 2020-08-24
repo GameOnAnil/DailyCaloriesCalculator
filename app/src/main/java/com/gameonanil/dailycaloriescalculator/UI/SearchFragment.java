@@ -119,7 +119,11 @@ public class SearchFragment extends Fragment implements AddFoodAdapter.AddFoodLi
 
         if (foodCalorieScore.getText().toString().isEmpty() || foodNameScore.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "Please enter food name and calorie first", Toast.LENGTH_SHORT).show();
-        } else {
+        }else if(foodQuantityET.getText().toString().isEmpty()){
+            Toast.makeText(getContext(), "Please enter food quantity", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
             String foodNameValue = foodNameScore.getText().toString();
             int foodCalorieValue = 0;
             int foodQuantity = 0;

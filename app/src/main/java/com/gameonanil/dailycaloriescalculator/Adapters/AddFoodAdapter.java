@@ -77,7 +77,7 @@ public class AddFoodAdapter extends PagedListAdapter<Food, AddFoodAdapter.AddFoo
     public void onBindViewHolder(@NonNull AddFoodViewHolder holder, int position) {
            //  Food currentFood = allFood.get(position);
              Food currentFood = allFood.get(position);
-            Log.d(TAG, "onBindViewHolder: current food "+currentFood.getFoodName());
+           // Log.d(TAG, "onBindViewHolder: current food "+currentFood.getFoodName());
              if(currentFood != null){
                  holder.foodName.setText(currentFood.getFoodName());
                  holder.foodCalorie.setText(String.valueOf(currentFood.getFoodCalories())+" kcal");

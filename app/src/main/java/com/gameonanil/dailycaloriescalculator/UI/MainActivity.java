@@ -127,8 +127,9 @@ public class MainActivity extends AppCompatActivity implements BreakfastAdapter.
                     totalDinner += dinnerFoods.get(i).getFoodCalorie()*dinnerFoods.get(i).getFoodQuantity();
 
                 }
-                int finalTotal = totalBreakFast+totalLunch+totalDinner;
-                Toast.makeText(MainActivity.this, "total calories is : " + finalTotal, Toast.LENGTH_SHORT).show();
+                int finalTotal =0;
+                   finalTotal  = totalBreakFast+totalLunch+totalDinner;
+               // Toast.makeText(MainActivity.this, "total calories is : " + finalTotal, Toast.LENGTH_SHORT).show();
                 clearData();
                 breakfastFoods = new ArrayList<>();
                 lunchFoods = new ArrayList<>();
@@ -136,6 +137,16 @@ public class MainActivity extends AppCompatActivity implements BreakfastAdapter.
                setupBreakfastRecyclerView();
                setupLunchRecyclerView();
                setupDinnerRecyclerView();
+
+               if(finalTotal!=0){
+                   Intent intent = new Intent(MainActivity.this,ScorePage.class);
+                   intent.putExtra("Total Calories",finalTotal);
+                   startActivity(intent);
+               }else{
+                   Toast.makeText(MainActivity.this, "Please add some food", Toast.LENGTH_SHORT).show();
+               }
+
+
 
             }
         });

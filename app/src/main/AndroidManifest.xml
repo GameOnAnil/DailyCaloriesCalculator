@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.AddFood"
+        <activity android:name=".UI.ScorePage"
+            android:parentActivityName=".UI.MainActivity"></activity>
+        <activity
+            android:name=".UI.AddFood"
             android:parentActivityName=".UI.MainActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".UI.MainActivity" >
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
