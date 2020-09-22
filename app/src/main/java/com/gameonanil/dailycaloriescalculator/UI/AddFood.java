@@ -59,10 +59,22 @@ public class AddFood extends AppCompatActivity {
             intent.putExtra("foodCalorie", 0);
             intent.putExtra("foodType", "None");
             startActivity(intent);
+            finish();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(AddFood.this, MainActivity.class);
+        intent.putExtra("foodName", "");
+        intent.putExtra("foodCalorie", 0);
+        intent.putExtra("foodType", "None");
+        startActivity(intent);
+        finish();
     }
 }
